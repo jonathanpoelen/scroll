@@ -264,21 +264,7 @@ int main(int ac, char** av)
   VERIFY_R(set_margin(unsigned(new_current_line), height), 0);
   VERIFY_R(attach_sigs(nb_line, height), 0);
 
-  auto write_all = [](char const* buf, ssize_t n){
-    ssize_t n2;
-    while ((n2 = write(1, buf, size_t(n))) > 0) {
-      if (n2 == n) {
-        return 1;
-      }
-      n -= n2;
-      buf += n2;
-    }
-    return -1;
-  };
-
-  char buf[1024 * 64];
-  ssize_t n;
-  while ((n = read(0, buf)) > 0 && write_all(buf, n) > 0) {
+  while (splice(0, nullptr, 1, nullptr, 1024 * 64, 0) > 0) {
   }
 
   reset_margin(nb_line);
