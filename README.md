@@ -2,7 +2,7 @@
 
 Limits the number of lines written by a program giving an automatic scroll effect.
 
-![Batrg sample](./demo.gif "scroll sample")
+![scroll sample](./demo.gif "scroll sample")
 
 # Compilation
 
