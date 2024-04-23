@@ -96,7 +96,7 @@ static unsigned get_current_line() noexcept
   VERIFY(write(fd, "\x1b[6n"));
 
   // response format: \e[${line};${column}R
-  char buf[100]{};
+  char buf[64];
   ssize_t n = read(fd, buf, std::size(buf) - 1);
   VERIFY(n);
 
